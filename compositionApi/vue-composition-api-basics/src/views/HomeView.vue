@@ -8,44 +8,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const counter =ref(0)
+  const counter = ref(0);
 
-      const decreaseCounter = () => {
-        counter.value--;
-      }
-      const increaseCounter = () => {
-        counter.value++;
-      }
-
-      
-
-      return {
-        counter,
-        decreaseCounter,
-        increaseCounter
-      }
-    }
+  const decreaseCounter = () => {
+    counter.value--
   }
-  // export default {
-  //   data() {
-  //     return {
-  //       counter: 0
-  //     }
-  //   },
-  //   methods: {
-  //     addToCounter() {
-  //       this.counter ++;
-  //     },
-  //     removeFromCounter() {
-  //       this.counter --;
-  //     }
-  //   }
-  // }
+  const increaseCounter = () => {
+    counter.value++
+  }
+
 </script>
 
 <style>
