@@ -18,17 +18,15 @@
     <div class="edit">
       <h4>Edit counter title:</h4>
 <input
-      v-model="counterData.title"
-      type="text"
-    >    </div>
+      v-model="counterData.title" type="text" v-autofocus>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, watch } from 'vue';
+import { computed, reactive, watch } from 'vue';
 
   const appTitle = 'My Amazing Counter App';
-  onMounted(() => {console.log('Title on mounted stuff')})
 
   const counterData = reactive({
     count: 0,
@@ -55,30 +53,11 @@ import { computed, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, 
     counterData.count += amount;
   }
 
-  onActivated(() => {
-    console.log('On Activated');
-  })
-  onDeactivated(() => {
-    console.log('On Deactivated');
-  })
-  onBeforeMount(() => {
-    console.log('On Before Mount');
-  })
-  onMounted(() => {
-    console.log('On Mounted');
-  })
-  onBeforeUnmount(() => {
-    console.log('On Before Unmount');
-  })
-  onUnmounted(() => {
-    console.log('On Unmounted');
-  })
-  onBeforeUpdate(() => {
-    console.log('On Before Update');
-  })
-  onUpdated(() => {
-    console.log('On Updated');
-  })
+  const vAutofocus = {
+    mounted: (el) => {
+      el.focus();
+    }
+  }
 
 </script>
 
