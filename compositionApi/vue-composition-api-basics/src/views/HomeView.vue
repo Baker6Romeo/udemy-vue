@@ -25,14 +25,21 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, watch } from 'vue';
 
   const appTitle = 'My Amazing Counter App';
+  onMounted(() => {console.log('Title on mounted stuff')})
 
   const counterData = reactive({
     count: 0,
     title: 'My Counter'
   })
+
+  watch(() => counterData.count, (newCount, oldCount) => {
+    if (newCount > 19) {
+      alert("You hit 20?");
+    }
+  }) 
 
   const evenOrOdd = computed(() => {
     if (counterData.count % 2 === 0) {
@@ -47,6 +54,31 @@ import { computed, reactive } from 'vue';
   const increaseCounter = (amount) => {
     counterData.count += amount;
   }
+
+  onActivated(() => {
+    console.log('On Activated');
+  })
+  onDeactivated(() => {
+    console.log('On Deactivated');
+  })
+  onBeforeMount(() => {
+    console.log('On Before Mount');
+  })
+  onMounted(() => {
+    console.log('On Mounted');
+  })
+  onBeforeUnmount(() => {
+    console.log('On Before Unmount');
+  })
+  onUnmounted(() => {
+    console.log('On Unmounted');
+  })
+  onBeforeUpdate(() => {
+    console.log('On Before Update');
+  })
+  onUpdated(() => {
+    console.log('On Updated');
+  })
 
 </script>
 
