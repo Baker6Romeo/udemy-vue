@@ -9,21 +9,32 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
   export default {
-    data() {
+    setup() {
+      const counter =ref(0)
+
       return {
-        counter: 0
-      }
-    },
-    methods: {
-      addToCounter() {
-        this.counter ++;
-      },
-      removeFromCounter() {
-        this.counter --;
+        counter
       }
     }
   }
+  // export default {
+  //   data() {
+  //     return {
+  //       counter: 0
+  //     }
+  //   },
+  //   methods: {
+  //     addToCounter() {
+  //       this.counter ++;
+  //     },
+  //     removeFromCounter() {
+  //       this.counter --;
+  //     }
+  //   }
+  // }
 </script>
 
 <style>
