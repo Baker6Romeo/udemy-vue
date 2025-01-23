@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue';
 
 import { vAutofocus } from '@/directives/vAutofocus';
 
@@ -52,11 +52,16 @@ import { vAutofocus } from '@/directives/vAutofocus';
       return 'odd'
   })
 
-  const decreaseCounter = (amount) => {
+  const decreaseCounter = async (amount) => {
     counterData.count -= amount;
+    await nextTick()
+    console.log('Do something when the DOM updates')
   }
   const increaseCounter = (amount) => {
     counterData.count += amount;
+    nextTick(() => {
+      alert(`New count is ${counterData.count}`);
+    });
   }
 
 </script>
