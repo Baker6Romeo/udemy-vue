@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <h2>{{ appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
 
     <h3>{{ counterData.title }}:</h3>
 
@@ -24,11 +24,15 @@
 </template>
 
 <script setup>
-import { computed, reactive, watch } from 'vue';
+import { computed, onMounted, reactive, ref, watch } from 'vue';
 
 import { vAutofocus } from '@/directives/vAutofocus';
 
   const appTitle = 'My Amazing Counter App';
+  const appTitleRef = ref(null);
+  onMounted (() => {
+    console.log(appTitleRef.value.fontSize);
+  })
 
   const counterData = reactive({
     count: 0,
