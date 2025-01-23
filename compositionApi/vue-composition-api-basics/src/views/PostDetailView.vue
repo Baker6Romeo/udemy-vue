@@ -34,6 +34,7 @@ import { useRoute, useRouter } from 'vue-router';
     })
   }
   const showPostId = () => {
+    console.log(route.params.id);
     alert(route.params.id);
   }
 </script>
