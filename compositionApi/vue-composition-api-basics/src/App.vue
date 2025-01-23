@@ -2,12 +2,14 @@
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
+    <RouterLink to="/modals">Modals</RouterLink>
   </nav>
 
   <RouterView />
 </template>
 
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
