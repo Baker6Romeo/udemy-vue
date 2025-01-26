@@ -2,8 +2,8 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show Modal</button>
-    <Modal v-if="showModal">
-      <template v-slot:title>My New Title</template>
+    <Modal
+      v-if="showModal">
       <p>Lorem Ipsem pirate stuff</p>
     </Modal>
   </div>
