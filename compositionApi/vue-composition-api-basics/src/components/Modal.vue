@@ -1,17 +1,21 @@
 <template>
   <teleport to="body">
-    <div class="modal">
+    <div v-if="modelValue" class="modal">
       <h1>{{ title }}</h1>
       <slot />
-      <button @click="$emit('hideModal')">Hide Modal with button</button>
+      <button @click="$emit('update:modelValue')">Hide Modal with button</button>
       <button @click="hideIt">Hide Modal with method</button>
     </div>
     </teleport>
 </template>
 
 <script setup>
-  const emit = defineEmits(['hideModal']);
+  const emit = defineEmits(['hideModal', 'update:modelValue']);
   const props = defineProps({
+    modelValue:{
+      type: Boolean,
+      default: false
+    },
     title: {
       type: String,
       default: 'No title specified'
@@ -19,7 +23,8 @@
   });
 
   const hideIt = () => {
-    emit('hideModal')
+    console.log('Hide It');
+    emit('update:modelValue', false)
   }
 </script>
 
