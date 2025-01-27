@@ -8,14 +8,19 @@
       </li>
     </ul>
     <textarea v-autofocus />
+    <div>
+    <button @click="increaseCounter(1)" class="counter-button">{{ counterData.count }}</button>
+    </div>
   </div>
 </template>
 
 <script setup>
-
-  import { vAutofocus } from '@/directives/vAutofocus';
   import { ref } from 'vue';
 
+  import { vAutofocus } from '@/directives/vAutofocus';
+  import { useCounter } from '@/use/useCounter';
+
+  const {counterData, increaseCounter} = useCounter()
   const posts = ref([
     {
       id: 1,
@@ -45,5 +50,10 @@
 <style>
 ul {
   margin-bottom: 20px;
+}
+.counter-button {
+  font-size: 60px;
+  width: 100%;
+  background-color: pink;
 }
 </style>

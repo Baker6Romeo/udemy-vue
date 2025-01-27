@@ -24,45 +24,19 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 
+import { useCounter } from '@/use/useCounter';
 import { vAutofocus } from '@/directives/vAutofocus';
 
   const appTitle = 'My Amazing Counter App';
   const appTitleRef = ref(null);
-  onMounted (() => {
-    console.log(appTitleRef.value.fontSize);
-  })
 
-  const counterData = reactive({
-    count: 0,
-    title: 'My Counter'
-  })
+  const { counterData, decreaseCounter, evenOrOdd, increaseCounter} = useCounter();
 
-  watch(() => counterData.count, (newCount, oldCount) => {
-    if (newCount > 19) {
-      alert("You hit 20?");
-    }
-  }) 
-
-  const evenOrOdd = computed(() => {
-    if (counterData.count % 2 === 0) {
-      return 'even'
-    }
-      return 'odd'
-  })
-
-  const decreaseCounter = async (amount) => {
-    counterData.count -= amount;
-    await nextTick()
-    console.log('Do something when the DOM updates')
-  }
-  const increaseCounter = (amount) => {
-    counterData.count += amount;
-    nextTick(() => {
-      alert(`New count is ${counterData.count}`);
-    });
-  }
+  /* If you do this you'll have to update method calls (counter.evenOrOdd)
+  const counter = useCounter();
+  */
 
 </script>
 
